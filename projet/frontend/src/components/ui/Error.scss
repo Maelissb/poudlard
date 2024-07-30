@@ -1,0 +1,35 @@
+.error {
+    border: 1px solid;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px auto;
+    font-size: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+
+    &.error {
+        border-color: #dc3545;
+        background-color: #f8d7da;
+        color: #721c24;
+    }
+
+    &.warning {
+        border-color: #ffc107;
+        background-color: #fff3cd;
+        color: #856404;
+    }
+
+    &.info {
+        border-color: #17a2b8;
+        background-color: #d1ecf1;
+        color: #0c5460;
+    }
+
+    strong {
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+}

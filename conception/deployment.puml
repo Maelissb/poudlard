@@ -1,0 +1,26 @@
+@startuml deployment
+
+node "Client" as client {
+    [VSCode]
+}
+
+node "Github" as gh {
+    [Remote repository] as repo
+    node "Workflow" as workflow {
+        [Install dependencies] as npmi
+        [Build]
+        artifact Deploy
+    }
+}
+
+node "Front" as front {
+    [Surge]
+}
+
+VSCode --> repo : commit & push
+repo --> npmi : on push to master
+npmi --> Build
+Build --> Deploy : on build success
+Deploy --> Surge
+
+@enduml

@@ -1,0 +1,9 @@
+@use '../../styles/mixins';
+
+.entity_card {
+    @include mixins.card;
+
+    h2 {
+        text-transform: capitalize;
+    }
+}

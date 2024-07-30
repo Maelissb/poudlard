@@ -1,0 +1,57 @@
+@startuml sequence
+
+actor User as u
+participant Frontend as f
+participant Backend as b
+database Database as d
+
+u -> f: click on login button
+activate f
+f -> u : display login form
+deactivate f
+u -> f: fill login form with credentials
+activate f
+f -> b: POST /login request
+activate b
+b -> d: Get user data
+activate d
+d -> b: Return user data
+deactivate d
+b -> b: check user found
+b -> b: check credentials
+alt Invalid credentials OR user not found
+    b -> f: Return error (Invalid credentials)
+    deactivate b
+    f -> u: Display error message
+    deactivate f
+else Valid credentials
+    b -> b: Generate token
+    b -> f: Return token
+    deactivate b
+    f -> f: Store token
+    return Redirect to homepage
+    deactivate f
+end
+
+== Subsequent Request with Token ==
+u -> f: Make API request with token
+activate f
+f -> b: Forward API request with token
+activate b
+b -> b: Verify token
+alt Invalid token
+    b -> f: Return error (Invalid token)
+    deactivate b
+    f -> u: Display error message
+    deactivate f
+else Valid token
+    b -> d: Fetch requested data
+    activate d
+    d -> b: Return requested data
+    deactivate d
+    b -> f: Return requested data
+    deactivate b
+    f -> u: Display requested data
+    deactivate f
+end
+@enduml

@@ -1,0 +1,32 @@
+@use '../../../styles/variables' as v;
+
+header {
+  height: 64px;
+  background-color: v.$color-green;
+  display: flex;
+  gap: v.$gutter;
+  justify-content: space-between;
+
+  .header_container {
+    display: flex;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+    margin: auto 0;
+  }
+
+  img {
+    height: 100%;
+    width: auto;
+
+  }
+
+  a:nth-last-child(1) {
+    margin-left: auto;
+
+    img {
+      padding: v.$gutter;
+    }
+  }
+}

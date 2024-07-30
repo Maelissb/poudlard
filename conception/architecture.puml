@@ -1,0 +1,26 @@
+@startuml architecture
+skinparam linetype ortho
+
+node "Frontend" {
+    component Client [
+        App React
+        node:20-alpine
+    ]
+}
+
+node "Backend" {
+    component NodeJs [
+        NodeJs
+        node:20-alpine
+    ]
+    database "PostgreSQL"
+    port API
+    API - [NodeJs]
+}
+
+
+Client -- [API]
+[NodeJs] - PostgreSQL
+[Adminer] - PostgreSQL
+
+@enduml

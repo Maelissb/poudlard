@@ -1,0 +1,72 @@
+@startuml erd
+' skinparam linetype ortho
+
+entity "Wizard" {
+  *id
+  --
+  lastname
+  firstname
+  birthdate
+  image
+}
+
+entity "House" {
+  *id
+  --
+  name
+  building
+  floor
+  image
+}
+
+entity "Role" {
+  *id
+  --
+  name
+  is_staff
+}
+
+entity "Subject" {
+  *id
+  --
+  name
+  description
+  image
+}
+
+entity "Room" {
+  *id
+  --
+  name
+  building
+  floor
+  number
+  capacity
+  image
+}
+
+entity "Class" {
+  *id
+  --
+  name
+  level
+}
+
+entity "Lesson" {
+  *id
+  --
+  day_of_week
+  start_hour
+  end_hour
+  color
+}
+
+Wizard }o--o{ Role
+Wizard }o--o| House
+Wizard }o--o| Class
+Subject ||-|| Room
+Class ||--o{ Lesson
+Lesson }o-|| Subject
+Wizard |o-o| Subject
+
+@enduml

@@ -1,0 +1,31 @@
+@startuml usecases
+left to right direction
+
+actor "Public"
+actor "Sorcier"
+actor "Staff"
+
+rectangle "Visibilité" {
+  usecase "Voir les emplois du temps" as uc1
+  usecase "Voir les sorciers" as uc2
+  usecase "Voir les matières" as uc3
+  usecase "Voir les membres du staff" as uc4
+}
+
+rectangle "Gestion" {
+  "Staff" --> (Gérer les matières)
+  "Staff" --> (Gérer les classes)
+  "Staff" --> (Gérer les sorciers)
+  "Staff" --> (Gérer les rôles)
+}
+
+"Staff" -> (uc1)
+
+"Sorcier" --> (uc1)
+"Sorcier" --> (uc2)
+"Sorcier" --> (uc3)
+
+"Public" ---> (uc4)
+"Public" ---> (uc3)
+
+@enduml

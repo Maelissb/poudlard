@@ -1,0 +1,27 @@
+@startuml sequence
+
+actor Wizard
+participant Client
+participant Server
+
+Wizard -> Client: Login as wizard
+activate Client
+Client -> Server: Post credentials
+activate Server
+Server -> Server: Validate credentials
+Server -> Client: Return wizard token
+deactivate Server
+Client -> Wizard: Role selection UI
+deactivate Client
+
+Wizard -> Client: Select a role
+activate Client
+Client -> Server: Post role selection
+activate Server
+Server -> Server: Validate role selection
+Server -> Client: Return role token
+deactivate Server
+Client -> Wizard: Return role token
+deactivate Client
+
+@enduml

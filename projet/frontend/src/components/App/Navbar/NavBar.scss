@@ -1,0 +1,43 @@
+@use '../../../styles/variables' as v;
+
+nav {
+  width: 100wv;
+
+  ul {
+    display: flex;
+    width: 100%;
+    height: auto;
+    align-items: center;
+    overflow-x: auto;
+    padding: v.$gutter;
+    gap: v.$gutter * 2;
+  }
+
+  li {
+    list-style: none;
+    border-radius: 50px;
+    font-size: 1rem;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    border: 2px solid v.$color-dark-green;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+
+    &.active {
+      background-color: v.$color-dark-green;
+
+      a {
+        color: v.$color-lightest;
+      }
+    }
+
+    a {
+      text-decoration: none;
+      color: v.$color-dark-green;
+      padding: 0.5rem 1rem;
+    }
+  }
+}

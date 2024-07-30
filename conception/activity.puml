@@ -1,0 +1,23 @@
+@startuml activity
+
+start
+
+repeat:Login;
+
+backward :Show error message;
+
+repeat while (login is successful ?) is (no) not (yes)
+
+  :Choose role menu;
+    switch(role)
+      case (teacher)
+        :Show teacher UI;
+      case (student)
+        :Show student UI;
+        case (staff)
+        :Show staff UI;
+    endswitch
+
+end
+
+@enduml
